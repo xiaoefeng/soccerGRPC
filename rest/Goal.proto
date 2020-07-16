@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+
+package test;
+
+
+service Goal {
+    rpc GoalLys (GoalReq) returns (GoalRes);
+}
+
+
+message GoalReq {
+    int32 playerID =1;
+}
+
+
+message GoalRes {
+    string result =1;
+}

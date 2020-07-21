@@ -6,16 +6,36 @@ import json
 import Goal_pb2 as pb2
 import Goal_pb2_grpc as pb2_grpc
 from concurrent import futures
-from goal1 import Goal1
-from passes import Passes
-
+from functions import Goals
+from functions import Passes
+from functions import Assist
+from functions import Shot
+from functions import Keypasses
+from functions import Smartpass
+from functions import Foul
 class Goal(pb2_grpc.GoalServicer):#所有的服务器部署都是pb2_grpc
     def GoalLys(self,request,context):
-        playData = pd.read_json('/home/rlf/project/1/World_Cup_Final.json')
+        playData = pd.read_json('/home/rlf/project/soccerGrpc/World_Cup_Final.json')
         playerID = request.playerID
-        Data = Goal1(playData,playerID)
-        num = Data.count()
-        result="进球数是{d}".format(d=num)
+        Data1 = Goals(playData,playerID)
+        num1 = Data1.countGoal()
+        Data2 = Passes(playData,playerID)
+        num2 = Data2.countPasses()
+        num3 = Data2.countAccurate()
+        Data3 = Assist(playData,playerID)
+        num4 = Data3.countAssist()
+        Data4 = Shot(playData,playerID)
+        num5 = Data4.countShots()
+        num6 = Data4.countShotsStraight()
+        Data5 = Keypasses(playData,playerID)
+        num7 = Data5.countKey()
+        Data6 = Smartpass(playData,playerID)
+        num8 = Data6.countsmart()
+        Data7 = Foul(playData,playerID)
+        num9 = Data7.countT()
+        num10 = Data7.countYellowcard()
+        num11 = Data7.countRedcards()
+        result="进球数:{a},助攻数:{b},传球数:{c},精准传球:{d},威胁球数:{e},直塞数:{f},射门数:{g},射正数:{h},犯规数:{i},黄牌数:{j},红牌数:{k}".format(a=num1,b=num4,c=num2,d=num3,e=num7,f=num8,g=num5,h=num6,i=num9,j=num10,k=num11)
         return pb2.GoalRes(result=result)#所有的proto的res和req都是在pb2当中
        
 

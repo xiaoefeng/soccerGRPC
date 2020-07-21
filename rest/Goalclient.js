@@ -15,7 +15,7 @@ app.use(KoaBodyParser())
 //})
 routers.post('/test', async (ctx) => {
     const { playerID } = ctx.request.body
-    await client.loadProto('/home/rlf/project/1/rest/Goal.proto');//先开始加载protobuf
+    await client.loadProto('/home/rlf/project/soccerGrpc/rest/Goal.proto');//先开始加载protobuf
     // Get service defnined
     let Goal = client.getService('test.Goal');//连接hello服务
 

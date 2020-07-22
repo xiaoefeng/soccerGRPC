@@ -35,8 +35,12 @@ class Goal(pb2_grpc.GoalServicer):#所有的服务器部署都是pb2_grpc
         num9 = Data7.countT()
         num10 = Data7.countYellowcard()
         num11 = Data7.countRedcards()
-        result="进球数:{a},助攻数:{b},传球数:{c},精准传球:{d},威胁球数:{e},直塞数:{f},射门数:{g},射正数:{h},犯规数:{i},黄牌数:{j},红牌数:{k}".format(a=num1,b=num4,c=num2,d=num3,e=num7,f=num8,g=num5,h=num6,i=num9,j=num10,k=num11)
+        # technical = {"goal":num1,"assist":num2}
+        # result="goal:{a},assist:{b},pass:{c},accuratePass:{d},keyPass:{e},smartPass:{f},shot:{g},shotOnTarget:{h},fouls:{i},yellowCard:{j},redCard:{k}".format(a=num1,b=num4,c=num2,d=num3,e=num7,f=num8,g=num5,h=num6,i=num9,j=num10,k=num11)
+        result="{a},{b},{c},{d},{e},{f},{g},{h},{i},{j},{k}".format(a=num1,b=num4,c=num2,d=num3,e=num7,f=num8,g=num5,h=num6,i=num9,j=num10,k=num11)
         return pb2.GoalRes(result=result)#所有的proto的res和req都是在pb2当中
+        # return pb2.GoalRes(result=technical)
+
        
 
 def run():

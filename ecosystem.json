@@ -1,0 +1,29 @@
+/*这是注释*/
+{
+    "apps":[
+      {
+        "name":"SoccerGrpc",
+        "script":"./rest/Goalclient.js",
+        "env":{
+          "COMMON_VARIABLE":"true"
+        },
+        "env_production":{
+          "NODE_ENV":"production"
+        }
+      }
+    ],
+    "deploy":{
+      "production":{
+        "user":"fitnessman",
+        "host":["39.106.173.84"],
+        "ref":"origin/master",
+        "repo":"git@gitee.com:xiaoerfeng123/soccerGRPC.git",
+        "path":"/football/SoccerGrpc/production",
+        "ssh_options":"StrictHostKeyChecking=no",
+        
+        "env":{
+          "NODE_ENV":"production"
+        }
+      }
+    }
+  }

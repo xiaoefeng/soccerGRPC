@@ -15,7 +15,7 @@ from functions import Smartpass
 from functions import Foul
 class Goal(pb2_grpc.GoalServicer):#所有的服务器部署都是pb2_grpc
     def GoalLys(self,request,context):
-        playData = pd.read_json('/home/rlf/project/soccerGrpc/World_Cup_Final.json')
+        playData = pd.read_json('./World_Cup_Final.json')
         playerID = request.playerID
         Data1 = Goals(playData,playerID)
         num1 = Data1.countGoal()
